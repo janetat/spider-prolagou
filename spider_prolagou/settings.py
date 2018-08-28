@@ -64,6 +64,7 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+# 优先级越小越先被调用
 #ITEM_PIPELINES = {
 #    'spider_prolagou.pipelines.SpiderProlagouPipeline': 300,
 #}

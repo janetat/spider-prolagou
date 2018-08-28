@@ -7,6 +7,7 @@
 
 import scrapy
 import datetime
+from spider_prolagou.items import SpiderProlagouItem
 
 class ProLagouSpider(scrapy.Spider):
     name = 'pro_lagou'
@@ -33,24 +34,26 @@ class ProLagouSpider(scrapy.Spider):
         :param response:
         :return:
         """
+
         def extract_with_css(query):
             return response.css(query).extract_first().strip()
 
         def extract_with_xpath(query):
             return response.xpath(query).extract_first().strip()
 
-        project_name = extract_with_css('.icon-bookmark + .project_key + span::text')
-        pub_name = extract_with_css('.icon-building + .project_key + span::text')
-        pub_time = extract_with_css('.icon-time + .project_key + span::text')
-        project_status = extract_with_css('.status::text')
-        project_detail = extract_with_css('.project_txt pre::text')
-        current_time = datetime.datetime.now()
+        item = SpiderProlagouItem()
+        item['project_name'] = extract_with_css('.icon-bookmark + .project_key + span::text')
+        item['pub_name'] = extract_with_css('.icon-building + .project_key + span::text')
+        item['pub_time'] = extract_with_css('.icon-time + .project_key + span::text')
+        item['project_status'] = extract_with_css('.status::text')
+        item['project_detail'] = extract_with_css('.project_txt pre::text')
+        item['current_time'] = datetime.datetime.now()
 
         yield {
-            '项目名': project_name if project_name else None,
-            '发布人': pub_name if project_name else None,
-            '发布时间': pub_time if project_name else None,
-            '项目状态': project_status if project_name else None,
-            '详情': project_detail if project_name else None,
-            '抓取时间': current_time,
+            '项目名': item['project_name'] if item['project_name'] else None,
+            '发布人': item['pub_name'] if item['pub_name'] else None,
+            '发布时间': item['pub_time'] if item['pub_time'] else None,
+            '项目状态': item['project_status'] if item['project_status'] else None,
+            '详情': item['project_detail'] if item['project_detail'] else None,
+            '抓取时间': item['current_time'],
         }
