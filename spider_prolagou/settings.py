@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for tutorial project
+# Scrapy settings for spider_prolagou project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tutorial'
+BOT_NAME = 'spider_prolagou'
 
-SPIDER_MODULES = ['tutorial.spiders']
-NEWSPIDER_MODULE = 'tutorial.spiders'
-FEED_EXPORT_ENCODING = 'utf-8'
+SPIDER_MODULES = ['spider_prolagou.spiders']
+NEWSPIDER_MODULE = 'spider_prolagou.spiders'
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+#USER_AGENT = 'spider_prolagou (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'tutorial.middlewares.TutorialSpiderMiddleware': 543,
+#    'spider_prolagou.middlewares.SpiderProlagouSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'tutorial.middlewares.TutorialDownloaderMiddleware': 543,
+#    'spider_prolagou.middlewares.SpiderProlagouDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,12 +65,12 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'tutorial.pipelines.TutorialPipeline': 300,
+#    'spider_prolagou.pipelines.SpiderProlagouPipeline': 300,
 #}
 
 # scrapy crawl pro_lagou -p xx.json 前要注释掉自定义pipeline
 ITEM_PIPELINES = {
-    'tutorial.pipelines.MongoPipeline': 300,
+    'spider_prolagou.pipelines.MongoPipeline': 300,
 }
 
 MONGO_URI = 'mongodb://localhost:27017'
