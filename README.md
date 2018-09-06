@@ -1,4 +1,6 @@
 # spider_prolagou
+初学Scrapy练手项目1
+
 爬取[大鲲](https://pro.lagou.com/project/)，基于Scrapy + MongoDB
 
 # 运行
